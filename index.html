@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="theme-color" content="#07090e" />
-  <title>WhatsApp Number Ban Report Portal - Malik Fiaz</title>
+  <title>WhatsApp Number Ban Portal - Malik Fiaz</title>
 
   <style>
     :root {
@@ -124,6 +124,11 @@
       color: var(--primary);
     }
 
+    .input-row {
+      display: flex;
+      gap: 8px;
+    }
+
     input, textarea {
       width: 100%;
       padding: 11px 14px;
@@ -135,6 +140,12 @@
       outline: none;
     }
     input:focus, textarea:focus { border-color: var(--primary); }
+
+    .country-code {
+      width: 90px;
+      text-align: center;
+      font-weight: bold;
+    }
 
     .btn {
       width: 100%;
@@ -176,7 +187,7 @@
         <img src="bg.jpg" alt="Malik Fiaz" />
       </div>
       <h1>WhatsApp Number Ban Portal</h1>
-      <p>Target: Noor.e Maseeh WhatsApp Channel / Number</p>
+      <p>Target: Noor.e Maseeh Number Ban Campaign</p>
       <div class="powered-by">⚡ Powered by Malik Fiaz</div>
     </div>
 
@@ -191,44 +202,50 @@
       </a>
     </div>
 
-    <!-- Target Number & Heavy Mass Report Form -->
+    <!-- Target Number Input with Country Code -->
     <div class="card">
-      <div class="section-title">🚨 Target Number / Channel</div>
-      <input type="text" id="targetInput" placeholder="Target WhatsApp Number ya Channel Link dalein (e.g. +92...)" />
-      <textarea id="customReason" rows="3">URGENT BAN REQUEST: Severe violation of WhatsApp Terms of Service, spreading hate speech against religious sentiments and Islam.</textarea>
+      <div class="section-title">🚨 Target WhatsApp Number (Ban Target)</div>
+      <div class="input-row">
+        <input type="text" id="countryCode" class="country-code" value="+92" placeholder="+92" />
+        <input type="text" id="targetNumber" placeholder="3001234567 (Bina zero ke)" />
+      </div>
+      <textarea id="customReason" rows="3">URGENT PERMANENT BAN REQUEST: Severe violation of WhatsApp Terms of Service, spreading hate speech and anti-Islamic content.</textarea>
       
       <!-- Send Report via Gmail Button -->
-      <button class="btn" onclick="sendMassReport()">✉️ Send 1000+ Heavy Reports via Gmail</button>
+      <button class="btn" onclick="sendHeavyReport()">✉️ Send 100 Heavy Reports via Gmail</button>
     </div>
 
     <!-- Download App Section -->
     <div class="card">
       <div class="section-title">📱 Install / Download App</div>
-      <p style="font-size: 0.78rem; color: var(--muted);">Is portal ko apne mobile phone mein permanent app ki tarah install karne ke liye neeche click karein:</p>
+      <p style="font-size: 0.78rem; color: var(--muted);">App download na hone ki waja browser restriction hoti hai. Neeche click karke asani se install karein:</p>
       <button id="installAppBtn" class="btn-download">📥 Download & Install App</button>
     </div>
   </div>
 
   <script>
-    function sendMassReport() {
-      const target = document.getElementById('targetInput').value.trim();
+    function sendHeavyReport() {
+      const cCode = document.getElementById('countryCode').value.trim();
+      const num = document.getElementById('targetNumber').value.trim();
       const reason = document.getElementById('customReason').value.trim();
 
-      if (!target) {
-        alert("Pehle target number ya link darj karein!");
+      if (!num) {
+        alert("Pehle target ka WhatsApp number darj karein!");
         return;
       }
 
-      // Generating 1000+ heavy report payload lines for WhatsApp Support Team via Gmail
-      let heavyPayload = `URGENT BAN REQUEST: Multiple Terms of Service Violations\nTarget Details: ${target}\nReason: ${reason}\n\n--- MASS REPORT LOGS ---\n`;
-      for (let i = 1; i <= 1000; i++) {
-        heavyPayload += `[Report ID #${i}] Target: ${target} - Violation: Hate Speech / Blasphemy. Immediate Permanent Ban Required.\n`;
+      const fullTarget = cCode + num;
+
+      // Generating 100 bhot bhot heavy report payload lines for WhatsApp Support Team via Gmail
+      let heavyPayload = `URGENT PERMANENT BAN REQUEST: Multiple Terms of Service Violations\nTarget Number: ${fullTarget}\nReason: ${reason}\n\n--- 100 HEAVY MASS REPORT LOGS ---\n`;
+      for (let i = 1; i <= 100; i++) {
+        heavyPayload += `[HEAVY REPORT #${i}] Target: ${fullTarget} - Violation: Hate Speech / Blasphemy. Immediate Permanent Number Ban Required.\n`;
       }
 
-      const emailSubject = encodeURIComponent("URGENT BAN REQUEST: Permanent Block for WhatsApp Target " + target);
+      const emailSubject = encodeURIComponent("URGENT BAN REQUEST: Permanent Block for WhatsApp Number " + fullTarget);
       const emailBody = encodeURIComponent(heavyPayload);
       
-      // Opens Gmail directly with preloaded heavy reports addressed to WhatsApp Support
+      // Opens Gmail directly with preloaded 100 heavy reports addressed to WhatsApp Support
       window.location.href = `mailto:support@whatsapp.com,android_help@support.whatsapp.com?subject=${emailSubject}&body=${emailBody}`;
     }
 
@@ -247,7 +264,7 @@
         const { outcome } = await deferredPrompt.userChoice;
         deferredPrompt = null;
       } else {
-        alert("App install karne ke liye apne browser (Chrome) ke Menu (3 dots) par click karke 'Install App' ya 'Add to Home screen' select karein!");
+        alert("App install karne ke liye Chrome browser ke upar 3-dots (Menu) par click karein aur 'Install app' ya 'Add to Home screen' par click karein!");
       }
     });
   </script>
